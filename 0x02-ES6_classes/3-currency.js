@@ -22,7 +22,7 @@ export default class Currency {
 
   set name(val) {
     if (typeof val === 'string') {
-       this._name = val;
+      this._name = val;
     } else {
       throw new TypeError('Name must be a string');
     }
