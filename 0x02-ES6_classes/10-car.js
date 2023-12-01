@@ -6,7 +6,7 @@ export default class Car {
   }
 
   get brand() {
-    return this._brand;;
+    return this._brand;
   }
 
   set brand(val) {
@@ -34,8 +34,8 @@ export default class Car {
   }
 
   cloneCar() {
-    const carModels = this.constructor[Symbol.newModels];
+    const CarModels = this.constructor[Symbol.newModels];
 
-    return new carModels();
+    return new CarModels();
   }
 }
