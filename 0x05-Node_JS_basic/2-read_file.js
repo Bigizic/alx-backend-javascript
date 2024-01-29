@@ -48,7 +48,6 @@ function countStudents(path) {
       console.log(`Number of students in ${key}: ${dictFields[key]}. List: ${result[key]}`);
     });
   } catch (error) {
-    throw new Error (error);
     throw new Error('Cannot load the database');
   }
 }
