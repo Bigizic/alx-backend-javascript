@@ -16,6 +16,7 @@ function countStudents(path) {
     const content = fs.readFileSync(path, 'utf8');
     const data = content.split('\n');
     data.shift();
+    data.pop();
     console.log(`Number of students: ${data.length}`);
     const fields = []; const names = [];
     data.forEach((element) => {
