@@ -1,6 +1,6 @@
 ## NodeJS Basics
 
-### At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+### At the end of this project, you are expected to be able to explain to anyone, without the help of Google, HOW TO:
 
 * run javascript using NodeJS
 * use NodeJS modules
