@@ -11,34 +11,34 @@
 
 const fs = require('fs');
 
-function countStudents (path) {
+function countStudents(path) {
   try {
     const content = fs.readFileSync(path, 'utf8');
     const data = content.split('\n');
     data.shift();
     console.log(`Number of students: ${data.length}`);
     const fields = []; const names = [];
-    data.forEach(element => {
-      names.push(element.split(','));
-      element = element.split(',');
-      fields.push(element[element.length - 1]);
+    data.forEach((element) => {
+      const spliter = element.split(',');
+      names.push(spliter);
+      fields.push(spliter[spliter.length - 1]);
     });
     const first = fields[0]; const dictFields = {}; let count = 0;
-    fields.forEach(item => {
+    fields.forEach((item) => {
       if (item === first) {
-        count++;
+        count += 1;
         dictFields[first] = count;
+      } else if (dictFields[item]) {
+        let tempCount = dictFields[item];
+        tempCount += 1;
+        dictFields[item] = tempCount;
       } else {
-        if (dictFields[item]) {
-          let tempCount = dictFields[item];
-          tempCount++;
-          dictFields[item] = tempCount;
-        } else { dictFields[item] = 1; }
+        dictFields[item] = 1;
       }
     });
     const result = {};
-    Object.keys(dictFields).forEach(key => {
-      names.forEach(rows => {
+    Object.keys(dictFields).forEach((key) => {
+      names.forEach((rows) => {
         if (rows.includes(key)) {
           if (result[key]) {
             result[key] += `, ${rows[0]}`;
