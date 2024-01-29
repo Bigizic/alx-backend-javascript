@@ -9,9 +9,9 @@
  * @author <Isaac Ajibola github.com/Bigizic>
  */
 
-const fs = require('fs');
 
-function countStudents (path) {
+function countStudents(path) {
+  const fs = require('fs');
   try {
     const content = fs.readFileSync(path, 'utf8');
     const data = content.split('\n');
