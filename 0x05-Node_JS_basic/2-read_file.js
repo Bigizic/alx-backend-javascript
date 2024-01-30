@@ -6,7 +6,7 @@
  *
  * Throw: error 'Cannot load the database' if the database can't be read
  *
- * @author <Isaac Ajibola github.com/Bigizic>
+ * @author: { Isaac Ajibola github.com/Bigizic }
  */
 
 const fs = require('fs');
