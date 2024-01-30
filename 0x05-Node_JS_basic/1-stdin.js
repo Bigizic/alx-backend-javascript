@@ -2,17 +2,18 @@
  * stdinProcess - reads stdin and outputs what's entered
  */
 
-function stdinProcess() {
+const process = require('process');
+
+const app = ((process) => {
   process.stdin.setEncoding('utf-8');
   process.stdout.write('Welcome to Holberton School, what is your name?\n');
   process.stdin.on('readable', () => {
     const chunk = process.stdin.read();
-    if (chunk) {
-      process.stdout.write(`Your name is: ${chunk}`);
-    }
+    if (chunk) { process.stdout.write(`Your name is: ${chunk}`); }
   });
   process.stdin.on('end', () => {
     process.stdout.write('This important software is now closing\n');
   });
-}
-stdinProcess();
+})(process);
+
+module.exports = app;
