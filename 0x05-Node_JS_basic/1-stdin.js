@@ -1,5 +1,5 @@
 /**
- * stdinProcess - reads stdin and outputs what's entered
+ * reads stdin and outputs what's entered
  */
 
 const process = require('process');
