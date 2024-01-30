@@ -1,8 +1,5 @@
 const pro = require('process');
 
-/* reads stdin and outputs what's entered
-*/
-
 const app = ((pro) => {
   pro.stdin.setEncoding('utf-8');
   pro.stdout.write('Welcome to Holberton School, what is your name?\n');
