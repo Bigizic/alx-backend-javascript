@@ -63,12 +63,9 @@ const app = http.createServer(async (req, res) => {
       let response = 'This is the list of our students\n';
       const data = countStudents(process.argv[2]);
       data.then((e) => {
-        response += e;
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(response);
-      });
-      data.catch((e) => {
-        response += e;
+        if (typeof (e) === 'object') {
+          response += 'Cannot load the database';
+        } else { response += e; }
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(response);
       });
