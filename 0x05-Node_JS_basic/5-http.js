@@ -68,6 +68,11 @@ const app = http.createServer(async (req, res) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(response);
       });
+      data.catch((e) => {
+        response += e;
+        res.writeHead(200, { 'Content-Type': 'text/plain' })
+        res.end(response);
+      })
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end('Internal Server Error\n');
