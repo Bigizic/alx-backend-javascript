@@ -1,11 +1,12 @@
-const http = require('http');
+const exp = require('express');
 const fs = require('fs').promises;
 
 /**
- * A more complex HTTP server making a call to an async function and
+ * A more complex http server using express making a call to an async function and
  * displaying function result in client side
  *
- * @author: {Isaac Ajibola  github.com/Bigizic}
+ * @author: {Isaac AJibola} <github.com/Bigizic>
+ *
  */
 
 async function countStudents(path) {
@@ -54,31 +55,23 @@ async function countStudents(path) {
   }
 }
 
-const app = http.createServer(async (req, res) => {
-  if (req.url === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
-    try {
-      let response = 'This is the list of our students\n';
-      const data = countStudents(process.argv[2]);
-      data.then((e) => {
-        if (typeof (e) === 'object') {
-          response += 'Cannot load the database';
-        } else { response += e; }
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(response);
-      });
-    } catch (error) {
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
-      res.end('Internal Server Error\n');
-    }
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Url Not Found\n');
-  }
-}).listen(1245, '127.0.0.1', () => {
-  console.log('Server is listening on port 1245');
+const app = exp();
+const port = 1245;
+const host = '0.0.0.0';
+
+app.get('/', (req, res) => {
+  res.send('Hello Holberton School!');
+}).get('/students', (req, res) => {
+  let response = 'This is the list of our students\n';
+  const data = countStudents(process.argv[2]);
+  data.then((e) => {
+    if (typeof (e) === 'object') {
+      response += 'Cannot load the database';
+    } else { response += e; }
+    res.send(response);
+  });
+}).listen(port, () => {
+  console.log(`Server is running on ${host}:${port}`);
 });
 
 module.exports = app;
