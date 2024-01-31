@@ -29,6 +29,7 @@ class StudentsController {
     }
     const data = readDatabase(pro.argv[2]);
     data.then((e) => {
+      if (typeof (e) === 'object') { response.status(500).send('Cannot load the database'); return; }
       const pat = /(\w+): \d+. List: (.+)$/;
       e.split('\n').forEach((i) => {
         const match = i.match(pat);
