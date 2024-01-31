@@ -24,4 +24,16 @@ describe('calculateNumber', () => {
     const result = calculateNumber(7.2, -1.5);
     assert.strictEqual(result, 6);
   });
+  it('Should return 2 when true are passed to each paramter', () => {
+    assert.strictEqual(calculateNumber(true, true), 2);
+  })
+  it('Should return 0 when false is passed for both params', () => {
+    assert.strictEqual(calculateNumber(false, false), 0);
+  })
+  it('Should return NaN when undefined is passed to both params', () => {
+    assert.strictEqual(calculateNumber(undefined, undefined), NaN);
+  })
+  it('Should round up an integer and a decimal', () => {
+    assert.strictEqual(calculateNumber(1, 3.7), 5);
+  })
 });
