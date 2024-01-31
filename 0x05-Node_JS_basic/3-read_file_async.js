@@ -13,7 +13,7 @@ const fs = require('fs').promises;
  * @author: { Isaac Ajibola github.com/Bigizic }
  */
 
-async function countStudents(path) {
+async function countStudents (path) {
   try {
     const content = await fs.readFile(path, 'utf8');
     const data = content.split('\n');

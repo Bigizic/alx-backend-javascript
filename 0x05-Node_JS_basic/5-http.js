@@ -1,13 +1,59 @@
+const http = require('http');
+const fs = require('fs').promises;
+
 /**
- * A simple HTTP server using Node's HTTP module
+ * A simple HTTP server using Node's HTTP module making a call to a function and displaying function
+ * result in client side
  *
  * @author: {Isaac Ajibola  github.com/Bigizic}
  */
 
-const http = require('http');
-const fs = require('fs');
-const process = require('process');
-const countStudents = require('./3-read_file_async');
+async function countStudents(path) {
+  try {
+    const content = await fs.readFile(path, 'utf8');
+    const data = content.split('\n');
+    data.shift();
+    if (data[data.length - 1].length === 0) { data.pop(); }
+
+    const fields = [];
+    const names = [];
+    data.forEach((element) => {
+      const spliter = element.split(',');
+      names.push(spliter);
+      fields.push(spliter[spliter.length - 1]);
+    });
+
+    const first = fields[0];
+    const dictFields = {};
+    let count = 0;
+
+    fields.forEach((item) => {
+      if (item === first) {
+        count += 1;
+        dictFields[first] = count;
+      } else if (dictFields[item]) {
+        let tempCount = dictFields[item];
+        tempCount += 1;
+        dictFields[item] = tempCount;
+      } else {
+        dictFields[item] = 1;
+      }
+    });
+
+    const result = [];
+    Object.keys(dictFields).forEach((key) => {
+      const studentsList = names
+        .filter((rows) => rows.includes(key))
+        .map((rows) => rows[0])
+        .join(', ');
+      result.push(`Number of students in ${key}: ${dictFields[key]}. List: ${studentsList}`);
+    });
+
+    return `Number of students: ${data.length}\n${result.join('\n')}`;
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
+}
 
 const app = http.createServer(async (req, res) => {
   if (req.url === '/') {
@@ -15,30 +61,20 @@ const app = http.createServer(async (req, res) => {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
     try {
-      const filePath = await countStudents(process.argv[2]);
-      //const fileContent = await fs.promises.readFile(filePath, 'utf8');
-
-      filePath.then(() => {
+      let response = 'This is the list of our students\n';
+      const data = countStudents(process.argv[2]);
+      data.then((e) => {
+        response += e;
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(`This is the list of our students ${filePath}`);
-      })
-      // Sending partial responses as they become available
-      
-
-      //fileContent.split('\n').forEach((line) => {
-        // Sending each line of the file as a partial response
-        //res.write(`${line}\n`);
-      //});
-
-      // Ending the response when all lines are sent
-      //res.end();
+        res.end(response);
+      });
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end('Internal Server Error\n');
     }
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Not Found\n');
+    res.end('Url Not Found\n');
   }
 }).listen(1245, '127.0.0.1', () => {
   console.log('Server is listening on port 1245');
