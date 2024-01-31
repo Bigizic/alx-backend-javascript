@@ -1,2 +1,1 @@
-*.ts linguist-detectable=true
-/0x00-ES6_basic/* linguist-vendored=false
+*.es linguist-language=JAVASCRIPT
