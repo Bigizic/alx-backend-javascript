@@ -1,2 +1,2 @@
 *.js linguist-language=JavaScript
-0x00-ES6_basic/* linguist-vendored
+0x00-ES6_basic/** linguist-vendored
