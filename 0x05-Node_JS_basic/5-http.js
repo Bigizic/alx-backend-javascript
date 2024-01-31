@@ -2,8 +2,8 @@ const http = require('http');
 const fs = require('fs').promises;
 
 /**
- * A simple HTTP server using Node's HTTP module making a call to a function and displaying function
- * result in client side
+ * A simple HTTP server using Node's HTTP module making a call to an async function and
+ * displaying function result in client side
  *
  * @author: {Isaac Ajibola  github.com/Bigizic}
  */
