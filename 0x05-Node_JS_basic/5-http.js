@@ -48,10 +48,9 @@ async function countStudents(path) {
         .join(', ');
       result.push(`Number of students in ${key}: ${dictFields[key]}. List: ${studentsList}`);
     });
-    return 'Hello world';
-    // return `Number of students: ${data.length}\n${result.join('\n')}`;
+    return `Number of students: ${data.length}\n${result.join('\n')}`;
   } catch (error) {
-    throw new Error('Cannot load the database');
+    return new Error('Cannot load the database');
   }
 }
 
