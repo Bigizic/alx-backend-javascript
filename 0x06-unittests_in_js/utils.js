@@ -1,5 +1,5 @@
 class Utils {
-    calculateNumber(type, a, b) {
+    static calculateNumber(type, a, b) {
         if (type === 'SUM') {
             return Math.round(a) + Math.round(b);
         } else if (type === 'DIVIDE') {
@@ -9,6 +9,7 @@ class Utils {
         } else if (type === 'SUBTRACT') {
             return Math.round(a) - Math.round(b);
         }
+        return 0;
     }
 }
 
