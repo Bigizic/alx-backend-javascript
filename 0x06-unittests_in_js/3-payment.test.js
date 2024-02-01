@@ -7,7 +7,7 @@ describe('sendPaymentRequestToApi', () => {
   it('should call Utils.calculateNumber with the correct arguments', () => {
     const calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
 
-    sendPaymentRequestToApi(100, 20);
+    sendPaymentRequestToApi(10, 20);
 
     expect(calculateNumberSpy.calledWithExactly(100, 20)).to.be.true;
 
