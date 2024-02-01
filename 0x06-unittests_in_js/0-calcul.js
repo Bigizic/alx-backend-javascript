@@ -1,6 +1,6 @@
 /**
  * calculateNumber - a simple function for the purpose of unittesting
- * @param {infer} a 
+ * @param {int} a 
  * @param {int} b 
  * @returns a + b
  */
