@@ -21,7 +21,7 @@ describe('sendPaymentRequestToApi', () => {
   it('should call Utils.calculateNumber with the correct arguments', () => {
     sendPaymentRequestToApi(100, 20);
 
-    expect(calculateNumberStub.calledWithExactly(100, 20)).to.be.true;
+    expect(calculateNumberStub.calledWithExactly('SUM', 100, 20)).to.be.true;
   });
 
   it('should log the correct message to the console', () => {
