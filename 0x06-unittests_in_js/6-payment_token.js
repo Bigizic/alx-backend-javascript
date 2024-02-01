@@ -1,6 +1,8 @@
-function getPaymentTokenFromAPI (success) {
+const { rejects } = require("assert");
+
+const getPaymentTokenFromAPI = (success) => new Promise ((resolve, reject) => {
   if (success) {
-    return Promise.resolve({ data: 'Successful response from the API' });
+    resolve({ data: 'Successful response from the API' });
   }
-}
+});
 module.exports = getPaymentTokenFromAPI;
