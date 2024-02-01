@@ -3,7 +3,7 @@
  * @param {str} type
  * @param {int} a 
  * @param {int} b 
- * @returns a + b
+ * @returns a type b
  */
 
 function calculateNumber(type, a, b) {
