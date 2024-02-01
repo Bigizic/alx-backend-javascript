@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
-const sendPaymentRequestToApi = require('./4-payment'); // Assuming the correct file path
+const sendPaymentRequestToApi = require('./4-payment');
 const Utils = require('./utils');
 
 describe('sendPaymentRequestToApi', () => {
@@ -8,7 +8,7 @@ describe('sendPaymentRequestToApi', () => {
   let consoleLogSpy;
 
   beforeEach(() => {
-    calculateNumberStub = sinon.stub(Utils, 'calculateNumber').returns(10);
+    calculateNumberStub = sinon.stub(Utils, 'calculateNumber');
 
     consoleLogSpy = sinon.spy(console, 'log');
   });
