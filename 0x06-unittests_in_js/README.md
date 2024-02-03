@@ -75,6 +75,7 @@
 
 #### Expected output
 
+```js
         > const calculateNumber = require("./1-calcul.js");
         > calculateNumber('SUM', 1.4, 4.5)
         6
@@ -84,7 +85,7 @@
         0.2
         > calculateNumber('DIVIDE', 1.4, 0)
         'Error'
-
+```
 
 ## 2-calcul_chai.js, 2-calcul_chai.test.js:
 
@@ -279,13 +280,14 @@ In a folder 10-api, reusing the previous project in 9-api (package.json, api.js 
 
     * Add an endpoint GET /available_payments that returns an object with the following structure:
 
+```js
         {
         payment_methods: {
             credit_cards: true,
             paypal: false
         }
         }
-
+```
     * Add an endpoint POST /login that returns the message Welcome :username where :username is the value of the body variable userName.
 
 #### Modify the file api.test.js:
