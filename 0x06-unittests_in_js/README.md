@@ -36,7 +36,7 @@
 
 
 #### Expected output
-
+```js
         > const calculateNumber = require("./0-calcul.js");
         > calculateNumber(1, 3)
         4
@@ -47,7 +47,7 @@
         > calculateNumber(1.5, 3.7)
         6
         > 
-
+```
 
 ## 1-calcul.js, 1-calcul.test.js:
 
